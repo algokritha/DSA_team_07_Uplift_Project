@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int minEatingSpeed(vector<int>& piles, int H) {
+        int l = 1, r = 1000000000;
+        while(l < r){
+            int mid = l + (r - l)/2;
+            if(!check(piles, H, mid)){
+                l = mid + 1;
+            }else{
+                r = mid;
+            }
+        }
+        return l;
+    }
+    
+    bool check(vector<int>& piles, int H, int K){
+        int total = 0;
+        for (int p: piles){
+            total += (p - 1) / K + 1;
+        }
+        
+        if(total<= H){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+};
