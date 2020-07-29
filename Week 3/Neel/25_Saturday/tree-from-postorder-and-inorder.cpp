@@ -1,21 +1,19 @@
 
-
 Node *helper(int in[], int post[], int instart, int inend, int postend){
     if(postend<0 || instart>inend){
         return NULL;
     }
-    struct Node *root;
-    root->data = post[postend];
+    Node *root = new Node(post[postend]);
     
-    int i= instart;
+    int i;
     
-    for(; i<inend; i++){
+    for(i = instart; i<inend; i++){
         if(in[i] == root->data){
             break;
         }
     }
     
-    root->left = helper(in, post, instart, i-1, postend-1+i-inend);
+    root->left = helper(in, post, instart, i-1, postend-1-inend+i);
     root->right = helper(in, post, i+1, inend, postend-1);
     return root;
 }
