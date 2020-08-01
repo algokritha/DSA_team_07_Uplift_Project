@@ -10,7 +10,26 @@ struct Node*{
 };
 
 Node* huffman(priority_queue<pair<int, char>> freq_n_val){
-    if(priority_queue.size() == 1){
+    if(freq_n_val.size() == 1){
+        return root;
+    }
+    bool found_star = false;
+    
+    for(auto x: freq_n_val){
+        if(x->second == '*'){
+            found_star = true;    
+        } 
+    }
+    int min;
+    int sec_min;
+    while(freq_n_val.size() != 1){
+        Node * temp = new Node();
+        
+        min = freq_n_val.top();
+        freq_n_val.pop();
+        sec_min = freq_n_val.top();
+        freq_n_val.pop();
+        temp->left = min->first;
         
     }
 }
