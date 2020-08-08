@@ -53,3 +53,42 @@ public:
         return permHead;
     }
 };
+
+/* A better approach */
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode *revHead = new ListNode();
+        ListNode *permHead = new ListNode();
+
+        if(head == NULL){
+            return head;
+        }
+        revHead = NULL;
+        while(head!=NULL){
+            ListNode *temp = new ListNode();
+            temp->val = head->val;
+            if(revHead == NULL){
+                revHead = temp;
+                temp->next = NULL;
+            }else{
+                temp->next = revHead;
+                revHead = temp;
+            }
+            head = head->next;
+            
+        }
+        
+        return revHead;
+    }
+};
