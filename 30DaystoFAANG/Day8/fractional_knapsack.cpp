@@ -1,5 +1,4 @@
 /* Problem Link => https://practice.geeksforgeeks.org/problems/fractional-knapsack/0 */
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -24,7 +23,7 @@ int main() {
         for(int i=0; i<n; i++){
             cin>>items[i].value;
             cin>>items[i].weight;
-            items[i].v_by_w = items[i].value/items[i].weight;
+            items[i].v_by_w = ((double)items[i].value/items[i].weight);
         }
         
         
@@ -33,7 +32,7 @@ int main() {
         
         int i=0;
         double val = 0;
-        int curWeight = 0;
+        double curWeight = 0;
         for(int i=0; i<n; i++){
             if(items[i].weight + curWeight < w){
                 val += items[i].value;
@@ -44,7 +43,7 @@ int main() {
                 break;
             }
         }
-        cout<<val<<"\n";
+        cout<<fixed<<setprecision(2)<<val<<"\n";
 	}
 	return 0;
 }
