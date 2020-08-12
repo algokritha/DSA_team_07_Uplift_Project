@@ -7,7 +7,7 @@ bool check(int graph[][51], int nodes[], int i, int color, int m, int n){
     //Color already not use for neightbours.
     
     for(int x=1; x<=n; x++){
-        if(graph[i][x] != 0 && nodes[x] == m){
+        if(graph[i][x] != 0 && nodes[x] == color && nodes[x] != 0){
             return false;
         }
     }
@@ -26,10 +26,12 @@ bool isPossible(int graph[][51], int nodes[], int curnode, int m, int n){
         if(check(graph, nodes, curnode, color, m, n)){
             nodes[curnode] = color;
             
+            //check for next ones
             if(isPossible(graph, nodes, curnode+1, m, n)){
                 return true;
             }
-            //Backtrack
+            
+            //If reached here means that not possible for some node and so backtrack
             nodes[curnode] = 0;
         }
     }
